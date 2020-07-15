@@ -53,9 +53,9 @@ public class Main {
                 } else if (p[i] == 8 || p[i] == 9 || p[i] == 11 || p[i] == 12 || p[i] == 14 || p[i] == 15 || p[i] == 16 || p[i] == 18) {
                     b[i][j] = Math.pow((Math.pow((x[j] / 2), 3) * (1 / 3 + Math.sin(x[j]))), Math.cos(x[j]));
                 }
-                /*else {
+                else {
                     b[i][j] = Math.log(Math.abs(Math.E * (Math.asin((x[j] - 1) / 8) / 2)));
-                }*/
+                }
             }
         }
         for (int i = 0; i < b.length; i++) {
