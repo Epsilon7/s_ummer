@@ -1,4 +1,5 @@
 package com.company;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -23,13 +24,13 @@ public class Main {
         //Arrays.sort(x);
         boolean sorted = false;
         double temp;
-        while(!sorted) {
+        while (!sorted) {
             sorted = true;
             for (int i = 0; i < x.length - 1; i++) {
-                if (x[i] > x[i+1]) {
+                if (x[i] > x[i + 1]) {
                     temp = x[i];
-                    x[i] = x[i+1];
-                    x[i+1] = temp;
+                    x[i] = x[i + 1];
+                    x[i + 1] = temp;
                     sorted = false;
                 }
             }
@@ -40,89 +41,29 @@ public class Main {
         }
 
         System.out.println();
+        System.out.println("Задание 3: ");
         ////////////////////////////////////////////////////////////////
 
 
-        int[][] prototype = new int[18][18];
-        for (int i = 0; i < prototype.length; i++) {
-            int n = i + 1;
-            for (int j = 0; j < prototype[i].length; j++) {
-                prototype[i][j] = n++;
-                if (n == 19) {
-                    n = 1;
+        double[][] b = new double[17][18];
+        for (int i = 0; i < 17; i++) {
+            for (int j = 0; j < 18; j++) {
+                if (p[i] == 6) {
+                    b[i][j] = Math.pow(((Math.tan(Math.pow((x[j] * (4 - x[j])), 2))) / 2), 2);
+                } else if (p[i] == 8 || p[i] == 9 || p[i] == 11 || p[i] == 12 || p[i] == 14 || p[i] == 15 || p[i] == 16 || p[i] == 18) {
+                    b[i][j] = Math.pow((Math.pow((x[j] / 2), 3) * (1 / 3 + Math.sin(x[j]))), Math.cos(x[j]));
                 }
+                /*else {
+                    b[i][j] = Math.log(Math.abs(Math.E * (Math.asin((x[j] - 1) / 8) / 2)));
+                }*/
             }
         }
-        System.out.println();
-
-        System.out.println("Вывод изначальных значений массива: ");
-        for (int i = 0; i < prototype.length; i++) {
-            for (int j = 0; j < prototype[i].length; j++) {
-                System.out.print(prototype[i][j] + " ");
+        for (int i = 0; i < b.length; i++) {
+            for (int j = 0; j < b[i].length; j++) {
+                System.out.print((Math.round(b[i][j] * 1000.0) / 1000.0) + " ");
             }
             System.out.println();
         }
-        System.out.println();
-
-        double[][] ans = new double[prototype.length][prototype.length];
-        for (int i = 0; i < ans.length; i++) {
-            for (int j = 0; j < ans[i].length; j++) {
-                ans[i][0] = prototype[i][0];
-            }
-        }
-
-//        for (int i = 0; i < ans.length; i++) {
-//            for (int j = 0; j < ans[i].length; j++) {
-//                System.out.print(ans[i][j]);
-//            }
-//            System.out.println();
-//        }
-
-        for (int i = 1; i < ans.length; i++) {
-            ans[5][i] = Math.pow(((Math.tan(Math.pow((prototype[5][i] * (4 - prototype[5][i])), 2))) / 2), 2);
-        }
-
-//        for (int i = 0; i < ans.length; i++) {
-//            for (int j = 0; j < ans[i].length; j++) {
-//                System.out.print(ans[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
-
-        for (int j = 7; j < ans.length; j++) {
-            if (j == 9 || j == 12 || j == 16) {
-                continue;
-            }
-            for (int i = 1; i < ans.length; i++) {
-                ans[j][i] = Math.pow((Math.pow((prototype[j][i] / 2), 3) * (1 / 3 + Math.sin(prototype[j][i]))), Math.cos(prototype[j][i]));
-            }
-        }
-
-
-//        for (int i = 0; i < ans.length; i++) {
-//            for (int j = 0; j < ans[i].length; j++) {
-//                System.out.print(ans[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
-
-        for (int j = 0; j < ans.length; j++) {
-            if (j == 5 || j == 7 || j == 8 || j == 10 || j == 11 || j == 13 || j == 14 || j == 15){
-                continue;
-            }
-            for (int i = 1; i < ans[j].length; i++) {
-                ans[j][i] = Math.log(Math.abs(Math.E * (Math.asin((prototype[j][i] - 1) / 8) / 2)));
-            }
-        }
-
-        System.out.println("Вывод массива с ответами: ");
-        for (int i = 0; i < ans.length; i++) {
-            for (int j = 0; j < ans[i].length; j++) {
-                System.out.print((Math.round(ans[i][j] * 1000.0) / 1000.0) + " ");
-            }
-            System.out.println();
-        }
-
 
     }
 }
